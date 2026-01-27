@@ -1,23 +1,633 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+
+    <!-- Schema.org FAQ 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "옷방인테리어 비용(견적)은 어떤 요소에 따라 달라지나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "옷방 인테리어 비용은 주로 ①공간 크기(평형), ②가구 종류(맞춤형 vs. 기성품), ③선택 자재(MDF, 원목, 스틸), ④디자인 복잡성(시스템장, 붙박이장, 드레스룸) 및 ⑤추가 옵션(조명, 거울, 제습기)에 따라 크게 달라집니다. 특히, 맞춤형 시스템 가구의 경우 자재 및 시공 난이도에 따라 비용 차이가 발생합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "시스템 옷장과 붙박이장의 차이점은 무엇이며, 어떤 것을 선택해야 할까요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "시스템 옷장은 모듈형으로 구성되어 자유롭게 배치 및 확장이 가능하며, 이동성이 좋고 통기성이 우수합니다. 반면, 붙박이장은 벽체와 일체형으로 설치되어 수납 효율이 높고 깔끔한 마감이 장점이지만, 공간 활용이 고정적이며 비용이 높습니다. 좁은 공간이나 이사를 고려하는 경우 시스템 옷장을, 깔끔한 마감과 높은 수납력을 원한다면 붙박이장을 추천합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "옷방인테리어 시 2026년 최신 트렌드는 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2026년 트렌드는 ‘개인화된 수납 최적화’와 ‘친환경 자재 활용’입니다. 사용자 라이프스타일에 맞춘 모듈 구성이 중요해졌으며, 재활용 가능한 소재나 E0 등급 이상의 친환경 자재 사용이 보편화되고 있습니다. 또한, 조명 시스템을 통한 공간 연출과 의류 관리 기기(스타일러 등)를 통합하는 스마트 시스템도 인기가 높습니다."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+    <style>
+      :root {
+        --primary-color: #2A4D69; /* 진한 파란색 계열 */
+        --secondary-color: #4B86B4; /* 부드러운 파란색 계열 */
+        --accent-color: #ADCBE3; /* 밝은 파란색 계열 */
+        --highlight-color: #E7EFF6; /* 배경 하이라이트 */
+        --text-color: #2D3E50; /* 어두운 회색 텍스트 */
+        --bg-light: #F0F4F8; /* 연한 배경 */
+        --bg-white: #ffffff; /* 흰색 배경 */
+        --btn-color: #FF6F61; /* CTA 버튼 색상 (붉은 계열) */
+        --btn-hover: #FF4F3B; /* CTA 버튼 호버 색상 */
+        --border-color: #D3DCE5; /* 경계선 색상 */
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-light);
+        color: var(--text-color);
+        line-height: 1.8;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      header {
+        background-color: var(--primary-color);
+        padding: 30px 20px;
+        text-align: center;
+        color: var(--bg-white);
+      }
+      header h1 {
+        margin: 0;
+        font-size: 2.8em;
+        font-weight: 700;
+      }
+      header h1 a {
+        color: var(--bg-white);
+        text-decoration: none;
+      }
+      .hero {
+        background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        color: var(--bg-white);
+        text-align: center;
+        padding: 90px 20px;
+      }
+      .hero h1 {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        font-weight: 800;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        line-height: 1.2;
+      }
+      .hero p {
+        font-size: 1.4em;
+        margin-bottom: 35px;
+        font-weight: 300;
+      }
+      .cta-btn {
+        background-color: var(--btn-color);
+        color: var(--bg-white);
+        padding: 18px 45px;
+        font-size: 1.3em;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+      .cta-btn:hover {
+        background-color: var(--btn-hover);
+        transform: translateY(-3px);
+      }
+      .compare-form-box {
+        background-color: var(--bg-white);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .compare-form-box h2 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 2.2em;
+        font-weight: 700;
+      }
+      .compare-form-box p {
+        font-size: 1.1em;
+        color: #555;
+        margin-bottom: 30px;
+      }
+      .compare-form-box label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-color);
+      }
+      .compare-form-box input,
+      .compare-form-box select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 1em;
+      }
+      .content-section {
+        margin-top: 40px;
+        background-color: var(--bg-white);
+        padding: 60px 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+      .content-section h2 {
+        font-size: 2.8em;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        font-weight: 800;
+        text-align: center;
+        line-height: 1.3;
+      }
+      .content-section h3 {
+        font-size: 1.8em;
+        color: var(--secondary-color);
+        margin-top: 40px;
+        margin-bottom: 15px;
+        font-weight: 700;
+        border-left: 5px solid var(--btn-color);
+        padding-left: 15px;
+      }
+      .content-section h4 {
+        font-size: 1.4em;
+        color: var(--text-color);
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+      .feature-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+      .feature-grid .item {
+        width: calc(33.33% - 20px);
+        margin: 10px;
+        padding: 25px;
+        background-color: var(--highlight-color);
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+      }
+      .feature-grid .item:hover {
+        transform: translateY(-5px);
+      }
+      .feature-grid .item img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+      }
+      .keyword-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      .keyword-list li {
+        background-color: var(--secondary-color);
+        color: var(--bg-white);
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 20px;
+        font-weight: 500;
+        font-size: 0.95em;
+        transition: background-color 0.3s;
+      }
+      .keyword-list li:hover {
+        background-color: var(--primary-color);
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px 0;
+      }
+      .faq-item h3 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.5em;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+      .faq-item h3::after {
+        content: '+';
+        font-size: 1.5em;
+        color: var(--btn-color);
+        transition: transform 0.3s;
+      }
+      .faq-item.active h3::after {
+        content: '-';
+        transform: rotate(180deg);
+      }
+      .faq-item p {
+        display: none;
+        padding-top: 15px;
+        color: #555;
+        font-size: 1.1em;
+      }
+      .faq-item.active p {
+        display: block;
+      }
+      footer {
+        background-color: var(--primary-color);
+        color: var(--bg-white);
+        text-align: center;
+        padding: 40px 20px;
+        font-size: 0.9em;
+      }
+      footer a {
+        color: var(--bg-white);
+        text-decoration: none;
+        margin: 0 10px;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* 테이블 스타일 */
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+        background-color: var(--bg-white);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .comparison-table th, .comparison-table td {
+        border: 1px solid var(--border-color);
+        padding: 15px;
+        text-align: center;
+        font-size: 1.05em;
+      }
+      .comparison-table th {
+        background-color: var(--highlight-color);
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+      .comparison-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .comparison-table td ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: left;
+      }
+      .comparison-table td li {
+        margin-bottom: 5px;
+      }
+
+      /* 지역 키워드 섹션 */
+      .local-keywords {
+        text-align: center;
+        margin-top: 50px;
+      }
+      .local-keywords h3 {
+        font-size: 2em;
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+      .local-keywords ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .local-keywords li {
+        background-color: var(--accent-color);
+        color: var(--text-color);
+        padding: 8px 15px;
+        margin: 4px;
+        border-radius: 5px;
+        font-size: 0.9em;
+        font-weight: 500;
+      }
+
+      /* 미디어 쿼리 */
+      @media (max-width: 900px) {
+        .feature-grid .item {
+          width: calc(50% - 20px);
+        }
+      }
+      @media (max-width: 768px) {
+        .hero h1 { font-size: 2.4em; }
+        .hero p { font-size: 1.2em; }
+        .cta-btn { padding: 15px 30px; font-size: 1.1em; }
+        .compare-form-box { padding: 25px; }
+        .content-section h2 { font-size: 2.2em; }
+        .feature-grid .item { width: 100%; margin: 10px 0; }
+        .keyword-list li { margin: 3px; font-size: 0.9em; }
+      }
+      @media (max-width: 600px) {
+        .comparison-table th, .comparison-table td { font-size: 0.9em; padding: 10px; }
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">옷방인테리어 전문가이드</a></h1>
+        </div>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <section class="hero">
+            <div class="container">
+                <h1>2026년 최신 트렌드 옷방인테리어<br>견적, 비용 비교부터 맞춤 솔루션까지</h1>
+                <p>옷방 인테리어 전문가의 도움으로 낭비되는 공간 없이, 수납 효율과 디자인을 모두 잡으세요.</p>
+                <div class="compare-form-box">
+                    <h2>무료 견적 비교 요청</h2>
+                    <p>간단한 정보 입력으로 전국 우수 업체들의 옷방 인테리어 비용을 투명하게 비교해 드립니다.</p>
+                    <form action="#" method="post">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+
+                        <label for="phone">연락처</label>
+                        <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" required>
+
+                        <label for="roomSize">옷방 크기 (평형)</label>
+                        <input type="number" id="roomSize" name="roomSize" placeholder="예: 3 (평)" required min="1" max="50">
+
+                        <label for="designType">선호하는 인테리어 유형</label>
+                        <select id="designType" name="designType" required>
+                            <option value="">-- 선택하세요 --</option>
+                            <option value="system_closet">시스템 옷장</option>
+                            <option value="builtin_closet">붙박이장</option>
+                            <option value="dressing_room">드레스룸 (전체 공간)</option>
+                            <option value="small_room">작은 방/원룸 수납</option>
+                        </select>
+
+                        <label for="location">시공 희망 지역 (시/구)</label>
+                        <input type="text" id="location" name="location" placeholder="예: 서울 강남구" required>
+
+                        <button type="submit" class="cta-btn">견적 요청하기</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>옷방인테리어, 더 이상 고민하지 마세요</h2>
+                <p>옷방 인테리어는 단순히 옷을 보관하는 공간을 꾸미는 것을 넘어, 일상의 질을 높이는 투자입니다. 무분별한 짐 쌓기 대신 체계적인 정리 시스템을 구축하면 공간 활용도가 높아지고, 원하는 옷을 쉽게 찾을 수 있어 만족도가 커집니다. 특히 좁은 공간에서도 쾌적하게 사용할 수 있도록 설계하는 것이 중요하며, 전문가의 도움을 받아야 후회 없는 결과물을 얻을 수 있습니다.</p>
+
+                <h3>옷방 인테리어의 핵심 요소</h3>
+                <div class="feature-grid">
+                    <div class="item">
+                        <img src="https://via.placeholder.com/80/2A4D69/fff?text=ICON1" alt="수납 효율 아이콘">
+                        <h3>수납 효율 극대화</h3>
+                        <p>바지, 셔츠, 액세서리 등 종류별 맞춤 수납 시스템을 적용하여 낭비되는 공간 없이 효율적으로 사용합니다.</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://via.placeholder.com/80/2A4D69/fff?text=ICON2" alt="디자인 미학 아이콘">
+                        <h3>디자인과 조화</h3>
+                        <p>인테리어 컨셉에 맞는 자재 선택과 색상 배치로 미적인 만족감을 높이며, 집 전체 분위기와 조화를 이룹니다.</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://via.placeholder.com/80/2A4D69/fff?text=ICON3" alt="내구성 및 품질 아이콘">
+                        <h3>내구성 및 품질 보장</h3>
+                        <p>변형이 적고 오래 사용할 수 있는 고품질 자재를 사용하여 오랜 기간 만족스러운 사용을 보장합니다.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top:50px;">함께 많이 찾는 키워드</h3>
+                <ul class="keyword-list">
+                    <li>#옷방인테리어비용</li>
+                    <li>#드레스룸인테리어</li>
+                    <li>#붙박이장가격비교</li>
+                    <li>#시스템옷장추천</li>
+                    <li>#원룸옷방꾸미기</li>
+                    <li>#옷장정리팁</li>
+                    <li>#옷방인테리어견적</li>
+                    <li>#작은방드레스룸</li>
+                    <li>#내돈내산후기</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>옷방 인테리어 종류별 장점과 단점 비교</h2>
+                <p>옷방 인테리어는 크게 붙박이장, 시스템 옷장, 그리고 기성품 가구 배치로 나눌 수 있습니다. 각각의 장단점을 명확히 파악하여 자신의 공간과 예산에 맞는 최적의 선택을 하는 것이 중요합니다.</p>
+
+                <h3>1. 붙박이장 (Built-in Closet)</h3>
+                <p>붙박이장은 벽체와 천장에 고정되어 일체형으로 설치되는 방식입니다. 공간을 빈틈없이 채워 높은 수납 효율을 자랑하며, 깔끔한 외관으로 인테리어 완성도가 높습니다. 문을 닫으면 옷장이 보이지 않아 미니멀한 공간 연출에 적합합니다. 다만, 한번 설치하면 이동이 불가능하고, 시공 비용이 비교적 높으며, 통풍이 원활하지 않을 경우 습기 관리가 필요하다는 단점이 있습니다.</p>
+
+                <h3>2. 시스템 옷장 (System Closet)</h3>
+                <p>시스템 옷장은 모듈형으로 구성되어 자유롭게 배치 및 확장이 가능합니다. 옷의 양이나 종류가 바뀔 때마다 구성 변경이 용이하며, 통기성이 우수하여 의류 보관에 좋습니다. 설치 비용이 붙박이장보다 저렴한 편이고 이사 시 이동이 가능하다는 장점이 있습니다. 반면, 노출형으로 짐이 정리되지 않으면 지저분해 보일 수 있고, 붙박이장 대비 먼지 관리가 더 필요합니다.</p>
+
+                <h3>3. 기성품 가구 배치 (Ready-made Furniture)</h3>
+                <p>기성품 가구는 가장 저렴하게 옷방을 꾸밀 수 있는 방법입니다. 다양한 디자인을 선택할 수 있고 설치가 간편합니다. 하지만 공간 활용 효율성이 떨어지고, 기성품 사이즈가 방에 정확히 맞지 않는 경우가 많아 틈새 공간이 생기기 쉽습니다. 저렴한 비용으로 빠르게 인테리어를 완성하고 싶을 때 적합한 방법입니다.</p>
+
+                <h3>옷방 인테리어 시스템별 비교 테이블</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>분류</th>
+                            <th>붙박이장</th>
+                            <th>시스템 옷장</th>
+                            <th>기성품 가구</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>설치 방식</td>
+                            <td>벽체 일체형 (고정)</td>
+                            <td>모듈형 (이동 및 확장 가능)</td>
+                            <td>개별 배치</td>
+                        </tr>
+                        <tr>
+                            <td>공간 활용도</td>
+                            <td>최상 (틈새 공간 없음)</td>
+                            <td>상 (모듈 조합에 따라 달라짐)</td>
+                            <td>중 (틈새 공간 발생 가능)</td>
+                        </tr>
+                        <tr>
+                            <td>디자인 마감</td>
+                            <td>깔끔하고 미니멀함</td>
+                            <td>자유로운 배치 가능</td>
+                            <td>개별 가구 디자인</td>
+                        </tr>
+                        <tr>
+                            <td>비용 (평균 견적)</td>
+                            <td>높음</td>
+                            <td>중간</td>
+                            <td>낮음</td>
+                        </tr>
+                        <tr>
+                            <td>장점</td>
+                            <td>높은 수납력, 인테리어 완성도, 깔끔한 외관</td>
+                            <td>뛰어난 통기성, 확장/재배치 용이, 비용 효율성</td>
+                            <td>저렴한 가격, 빠른 설치, 다양한 디자인 선택</td>
+                        </tr>
+                        <tr>
+                            <td>단점</td>
+                            <td>이동 불가, 높은 초기 비용, 습기 관리 필요</td>
+                            <td>먼지 관리 필요, 노출형 디자인</td>
+                            <td>공간 낭비, 낮은 통일성, 내구성 변동성 높음</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="margin-top:50px;">드레스룸 인테리어 시 고려할 지역별 차이점</h3>
+                <p>우리나라의 기후 특성상 지역별 습도 차이가 뚜렷하므로, 옷방 인테리어 시 이를 고려해야 합니다. 특히 여름철 장마와 겨울철 난방으로 인한 결로 현상이 옷감 손상의 주범이 됩니다. 해안가에 위치한 부산, 인천, 제주 등은 습도가 높아 통기성이 좋은 시스템 옷장을 추천하며, 내부 제습기 설치를 고려해야 합니다. 반면 서울이나 경기 등 내륙 지역에서는 결로 방지를 위한 단열재와 환기 시설이 중요합니다.</p>
+
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>옷방 인테리어 비용 절감 팁 및 2026년 트렌드</h2>
+                <p>2026년 옷방 인테리어 트렌드는 '맞춤형 수납 솔루션'과 '친환경 자재'로 요약됩니다. 단순한 수납을 넘어 라이프스타일에 맞춘 모듈 구성이 필수가 되었으며, 환경을 생각하는 E0 등급 이상의 자재가 인기를 끌고 있습니다. 비용을 절약하면서도 트렌디한 인테리어를 완성하는 방법을 소개합니다.</p>
+
+                <h3>1. 불필요한 짐 사전 정리 및 처분</h3>
+                <p>옷방 인테리어 비용의 상당 부분은 수납 가구의 크기에 따라 결정됩니다. 인테리어 시공 전 입지 않는 옷이나 사용하지 않는 물건을 미리 정리하여 짐의 양을 줄이면, 작은 크기의 시스템장이나 붙박이장으로도 충분해져 전체 비용을 절감할 수 있습니다. 짐이 줄어들수록 수납 효율은 높아지고 인테리어 만족도도 올라갑니다.</p>
+
+                <h3>2. 모듈형 시스템 옷장 활용 (가성비 고려)</h3>
+                <p>맞춤형 붙박이장은 깔끔하지만 비용이 많이 듭니다. 합리적인 가격으로 인테리어를 완성하려면 모듈형 시스템 옷장을 활용하는 것이 좋습니다. 기본 골조만 설치하고 필요에 따라 서랍장, 선반, 행거 등을 추가할 수 있어 가성비가 뛰어납니다.</p>
+
+                <h3>3. 자재 및 옵션 신중하게 선택하기</h3>
+                <p>옷방 인테리어 견적은 자재 등급에 따라 천차만별입니다. 특히 원목, 스틸, MDF 등 자재의 종류와 등급에 따라 가격 차이가 크게 납니다. 저렴한 비용을 원한다면 E1 등급 이하의 자재 대신 E0 등급의 친환경 MDF를 선택하되, 추가적인 조명이나 고급 하드웨어(댐퍼, 거울 등) 옵션은 신중하게 결정하여 불필요한 지출을 막는 것이 좋습니다.</p>
+
+                <h3>4. 다양한 업체 비교 견적 받기</h3>
+                <p>한 업체에서 받은 견적만으로는 적정 가격을 알기 어렵습니다. 최소 3곳 이상의 전문 업체로부터 상세 견적을 받아 항목별 비용을 비교해야 '내돈내산' 후기가 좋은 업체를 찾을 수 있습니다. 견적 비교 시 숨겨진 추가 비용이 없는지 꼼꼼하게 확인하는 것도 중요합니다. (ex: 시공 인력비, 폐기물 처리비 등)</p>
+
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>전국 옷방 인테리어 지역별 추천 정보</h2>
+                <div class="local-keywords">
+                    <h3>전국 주요 지역별 키워드 리스트 (총 30개 이상)</h3>
+                    <p>옷방 인테리어 업체 비교 시 참고할 전국 주요 지역별 키워드입니다. [지역] + [옷방인테리어/드레스룸/붙박이장]으로 검색하세요.</p>
+                    <ul>
+                        <li>#서울옷방인테리어</li>
+                        <li>#강남드레스룸견적</li>
+                        <li>#서초옷방인테리어추천</li>
+                        <li>#송파붙박이장가격</li>
+                        <li>#마포시스템옷장</li>
+                        <li>#영등포인테리어후기</li>
+                        <li>#인천옷방인테리어</li>
+                        <li>#경기수원옷방인테리어</li>
+                        <li>#용인드레스룸전문</li>
+                        <li>#성남붙박이장시공</li>
+                        <li>#고양일산옷방인테리어</li>
+                        <li>#하남미사드레스룸</li>
+                        <li>#부산해운대드레스룸</li>
+                        <li>#부산센텀시티인테리어</li>
+                        <li>#울산옷방인테리어</li>
+                        <li>#대구옷방인테리어</li>
+                        <li>#대전드레스룸견적</li>
+                        <li>#광주옷방인테리어</li>
+                        <li>#세종시드레스룸시공</li>
+                        <li>#청주옷방인테리어</li>
+                        <li>#천안시스템옷장</li>
+                        <li>#강원춘천옷방인테리어</li>
+                        <li>#제주옷방인테리어</li>
+                        <li>#창원드레스룸</li>
+                        <li>#포항옷방인테리어</li>
+                        <li>#김해옷방인테리어</li>
+                        <li>#전주옷방인테리어</li>
+                        <li>#군산드레스룸</li>
+                        <li>#목포옷방인테리어</li>
+                        <li>#순천드레스룸견적</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>자주 묻는 질문 (FAQ)</h2>
+
+                <div class="faq-item">
+                    <h3>옷방인테리어 시공 기간은 얼마나 걸리나요?</h3>
+                    <p>단순 기성품 가구 배치나 소형 시스템 옷장 설치는 하루 내에 완료됩니다. 그러나 맞춤형 붙박이장이나 공간 전체를 드레스룸으로 꾸미는 대규모 인테리어는 가구 제작 기간(주문 후 1~2주) 및 설치 기간(1~3일)을 포함하여 총 2주에서 3주가 소요될 수 있습니다. (2026년 기준)</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>옷방 인테리어 자재 등급(E0, E1)은 무엇인가요?</h3>
+                    <p>자재 등급은 포름알데히드 방출량에 따라 나뉩니다. E1 등급은 실내 사용이 가능하나, E0 등급은 친환경 자재로 분류되어 인체에 무해하며, 특히 옷방처럼 밀폐된 공간에 적합합니다. 최근에는 친환경 트렌드에 따라 E0 등급을 사용하는 업체가 늘고 있습니다.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>좁은 공간(원룸) 옷방 인테리어의 장점은 무엇인가요?</h3>
+                    <p>좁은 공간에서는 수납 효율이 인테리어의 핵심입니다. 시스템 옷장이나 맞춤형 붙박이장을 활용하면 바닥 공간을 확보할 수 있고, 수납 동선이 효율적으로 바뀌어 공간이 넓어 보이는 효과를 줍니다. 특히 원룸에서는 파티션 기능을 겸하는 옷장을 활용하는 것도 좋은 방법입니다.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>옷방인테리어 견적 비교 시 반드시 확인해야 할 사항은?</h3>
+                    <p>견적서에는 ①자재 등급(E0/E1), ②하드웨어(경첩, 레일) 품질, ③시공비(설치 및 폐기물 처리), ④AS 기간 및 범위가 명시되어야 합니다. 저렴한 곳을 찾으려다가 저등급 자재를 사용하거나 AS가 불가능한 곳을 선택할 수 있으니 꼼꼼하게 확인하세요.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>드레스룸에 꼭 필요한 추가 옵션은 무엇인가요?</h3>
+                    <p>조명과 통풍/습기 관리가 중요합니다. 조명은 옷 색깔을 정확하게 확인하는 데 필수적이며, 습기 관리를 위해 환기 시스템이나 제습기를 설치하는 것을 추천합니다. 서랍형 액세서리 수납함, 거울 도어 등도 공간 활용도를 높여주는 좋은 옵션입니다.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+                <p>옷방 인테리어 시공 및 자재 관련 기준, 소비자 권리 등에 대한 공인된 정보입니다.</p>
+                <ul>
+                    <li><a href="https://www.law.go.kr/법령/주택법/(16790,20200204)" target="_blank" rel="noopener">「주택법」 및 「주택건설기준 등에 관한 규정」: 주택의 기본 설계 및 건설 기준 관련 법령</a></li>
+                    <li><a href="https://www.kicas.or.kr/" target="_blank" rel="noopener">한국가구산업협회 (KICAS): 가구 산업 표준 및 트렌드 정보 제공</a></li>
+                    <li><a href="https://www.kca.go.kr/cs/info/board/infoBoard/view.do?menuKey=30&no=10037847&boardCateCd=1" target="_blank" rel="noopener">한국소비자원: 인테리어 시공 관련 소비자 피해주의보 및 분쟁 해결 기준</a></li>
+                    <li><a href="https://ko.wikipedia.org/wiki/%EB%93%9C%EB%A0%88%EC%8A%A4%EB%A3%B8" target="_blank" rel="noopener">드레스룸 - 위키백과: 드레스룸의 정의 및 역사, 구성 요소</a></li>
+                    <li><a href="https://www.namu.wiki/w/%EA%B0%80%EA%B5%AC" target="_blank" rel="noopener">가구 - 나무위키: 가구의 종류, 재료, 선택 가이드</a></li>
+                </ul>
+                <p style="margin-top:20px;">위 자료들은 옷방 인테리어 시공 시 자재의 안전성 기준, 소비자 권리 보호, 합리적인 견적 비교에 도움을 줄 수 있습니다.</p>
+            </div>
+        </section>
+
     </main>
-  </body>
-</html>
+
+    <script>
+        // FAQ 토글 기능
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+
+   
+  
